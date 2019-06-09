@@ -1,4 +1,4 @@
-<div class="detailPage" *ngIf="!errorMes && listOfFilm">
+<div class="detailPage" *ngIf="listOfFilm">
   <div class="detailPage_list_title">
     <p>{{listOfFilm.name}}</p>
     <span class="detailPage_date">{{listOfFilm.created | date:'mediumDate'}}</span>

@@ -1,7 +1,7 @@
 import { Injectable, ErrorHandler } from '@angular/core';
 import { HttpClient, HttpErrorResponse, } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { Subject, Observable, throwError } from 'rxjs';
+import { Subject, Observable, throwError, BehaviorSubject } from 'rxjs';
 import { ErrorObservable } from 'rxjs/Observable/ErrorObservable';
 
 
@@ -13,8 +13,8 @@ import { ErrorObservable } from 'rxjs/Observable/ErrorObservable';
 export class MainAppService {
 
   //observable Subject for handling event
-  ItemSubject = new Subject<any>();
-  errorSubject = new Subject<any>();
+  ItemSubject = new Subject();
+  errorSubject = new Subject();
 
   constructor(private http: HttpClient) { }
 
@@ -36,9 +36,8 @@ export class MainAppService {
   }
   
   // function for error handler
-  errorHandle(error: HttpErrorResponse) {
-    if (error.status == 404) {
-      return throwError(error.message);
-    }
+   errorHandle(error: HttpErrorResponse) {
+    return throwError(error.message);
+  
   }
 } 

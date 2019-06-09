@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent {
   listOfChar: Object;
-  errorMes: Object;
+  errorMes: any;
 
   // geting Json Data from Json File
   constructor(private service: MainAppService, private router: Router) {
@@ -25,9 +25,11 @@ export class HomePageComponent {
     this.service.getSelectedItem(item).subscribe((data) => {
       this.service.ItemSubject.next(data)
     },
+    
       //handling erro for responce 404
-      error => this.service.errorSubject.next(error.message))
+      error => this.service.errorSubject.next(error))
       // Navigate to diffrent route
+      
      this.router.navigateByUrl(`/${name}`);
   }
 }

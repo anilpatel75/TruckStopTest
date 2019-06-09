@@ -10,7 +10,7 @@ import { MainAppService } from 'src/app/main-app.service';
 export class DetailComponent implements OnInit {
   
   listOfFilm: Object;
-  errorMes: Object;
+  errorMes: any;
 
   constructor(private service: MainAppService) {
   }
@@ -20,6 +20,7 @@ export class DetailComponent implements OnInit {
       this.listOfFilm = listOfFilm;
     })
     this.service.errorSubject.subscribe((data) => {
+      console.log(data);
       this.errorMes = data;
     })
   }
