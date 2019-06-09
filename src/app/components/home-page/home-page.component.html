@@ -1,0 +1,17 @@
+<div *ngIf="listOfChar && !errorMes">
+  <div class="homepage-title" >
+    <p>List Of Filmmaker</p>
+  </div>
+  
+  <div class="homePage" *ngIf="listOfChar">
+    <div *ngFor="let item of listOfChar.characters" class="homepage_list" (click)="onCharClick(item.url,item.name)">
+      <p>{{item.name}}</p>
+    </div>
+  
+  </div>
+</div>
+<div *ngIf="errorMes">
+  <p>{{errorMes}}</p>
+</div>
+
+
