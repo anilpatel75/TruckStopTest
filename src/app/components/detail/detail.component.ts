@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { MainAppService } from 'src/app/main-app.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,8 +12,9 @@ export class DetailComponent implements OnInit {
   
   listOfFilm: Object;
   errorMes: Object;
+  param:any;
 
-  constructor(private service: MainAppService) {
+  constructor(private service: MainAppService, private router:Router,private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -22,5 +24,15 @@ export class DetailComponent implements OnInit {
     this.service.errorSubject.subscribe((data) => {
       this.errorMes = data;
     })
+    console.log(this.route.params.subscribe((params) =>{
+       this.param = params.item;
+       console.log(params)
+    }))
+  }
+   onclickFIlm(url:string, i:number) {
+   this.service.getfilmTitleData(url).subscribe((filmDetail) => {
+   this.service.filmSubject.next(filmDetail);
+   }, error => this.service.errorSubject.next(error))
+   this.router.navigate([`/${this.param}/film${i}`]);
   }
 }

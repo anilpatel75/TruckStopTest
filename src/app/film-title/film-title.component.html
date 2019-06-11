@@ -1,0 +1,14 @@
+
+<div class="detailPage" *ngIf="film && !error">
+  <div class="detailPage_list_title">
+    <p>{{film.title}}</p>
+    <span class="detailPage_date">{{film.release_date | date:'mediumDate'}}</span>
+  </div>
+  <div class="back_button_div"> 
+  <button [routerLink]="['/']" class="back_button">Back</button>
+  </div>
+</div>
+
+<div *ngIf="error">
+  <p>{{error}}</p>
+</div>

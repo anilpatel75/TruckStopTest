@@ -1,13 +1,12 @@
 <div class="detailPage" *ngIf="!errorMes && listOfFilm">
   <div class="detailPage_list_title">
     <p>{{listOfFilm.name}}</p>
-    <span class="detailPage_date">{{listOfFilm.created | date:'mediumDate'}}</span>
   </div>
   <div class="back_button_div"> 
   <button [routerLink]="['/']" class="back_button">Back</button>
   </div>
   <div class="detailPage-main" *ngIf ="listOfFilm.films">
-    <div *ngFor="let item of listOfFilm.films; let i = index" class="detailPage_list">
+    <div *ngFor="let item of listOfFilm.films; let i = index" class="detailPage_list" (click) ="onclickFIlm(item, i+1)">
       <p> Film: {{i+1}}</p>
     </div>
   </div>

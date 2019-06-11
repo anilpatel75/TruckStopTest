@@ -26,7 +26,7 @@ export class HomePageComponent {
       this.service.ItemSubject.next(data)
     },
       //handling erro for responce 404
-      error => this.service.errorSubject.next(error.message))
+      error => this.service.errorSubject.next(error))
       // Navigate to diffrent route
      this.router.navigateByUrl(`/${name}`);
   }
