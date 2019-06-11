@@ -22,12 +22,10 @@ export class DetailComponent implements OnInit {
       this.listOfFilm = listOfFilm;
     })
     this.service.errorSubject.subscribe((data) => {
-      console.log(data);
       this.errorMes = data;
     })
     console.log(this.route.params.subscribe((params) =>{
        this.param = params.item;
-       console.log(params)
     }))
   }
    onclickFIlm(url:string, i:number) {
